@@ -7,11 +7,5 @@ pipeline {
                 git 'https://github.com/anupam1897/sigrette.git'
             }
         }
-        
-        stage('Build') {
-            steps {
-                python app.py
-            }
-        }
     }
 }
