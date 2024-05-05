@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Doesn't require build. Prepare for Execution"
-                pip install -r .\requirements.txt
+                pip install -r requirements.txt
             }
         }
         stage('Test') {
