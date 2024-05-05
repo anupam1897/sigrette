@@ -7,16 +7,27 @@ pipeline {
                 git 'https://github.com/anupam1897/sigrette.git'
             }
         }
-        stage('Build') {
+        stage('Installing Dependencies') {
             steps {
-                echo "Doesn't require build. Prepare for Execution"
-                pip install -r requirements.txt
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('Test') {
+            steps{
+                sh 'echo "Automated Testing: PyTest"'
+                sh 'python -m pytest'
+            }
+            
+        }
+        stage('Build') {
             steps {
-                echo "Automated Testing: PyTest"
-                python -m pytest
+                sh 'python setup.py build'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "To be deployed on varcel"'
+                sh 'echo "Pipeline Ends Here"'
             }
         }
     }
